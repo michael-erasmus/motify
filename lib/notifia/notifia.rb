@@ -19,6 +19,10 @@ module Notifia
    default_center.removeObserver(observers.delete(state)) 
   end
 
+  def forget_all
+    observers.each_key{|state| forget(state)}
+  end
+
   private
   def add_observer(state, object, &block)
     default_center.addObserverForName(state, object:nil, queue:main_queue, usingBlock:block)

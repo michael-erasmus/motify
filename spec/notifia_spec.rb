@@ -28,6 +28,16 @@ describe "notifia" do
     @hn.should.not.observes :bar
     fired.should == false
   end
+
+  it 'forgets all notifications' do
+    @hn.on :foo {|o| }
+    @hn.on :bar {|o| }
+
+    @hn.forget_all
+
+    @hn.should.not.observes :foo
+    @hn.should.not.observes :bar
+  end
 end
 
 
