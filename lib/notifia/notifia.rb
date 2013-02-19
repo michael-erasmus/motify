@@ -4,6 +4,10 @@ module Notifia
     add_observer(state,nil,&block)
   end
 
+  def fire(state)
+    default_center.postNotificationName(state, object: nil, userInfo: nil) 
+  end
+
   private
   def add_observer(state, object, &block)
     default_center.addObserverForName(state, object:nil, queue:main_queue, usingBlock:block)
