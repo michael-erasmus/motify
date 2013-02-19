@@ -19,6 +19,15 @@ describe "notifia" do
     @hn.fire :foo
     fired.should == true
   end
+
+  it 'forgets notifications' do
+    fired = false
+    @hn.on :bar {|o| fired = true}
+    @hn.forget :bar
+    @hn.fire :bar
+    @hn.should.not.observes :bar
+    fired.should == false
+  end
 end
 
 
