@@ -1,11 +1,18 @@
 module Notifia
+  def observers
+    @observers ||= {} 
+  end
 
   def on(state,&block)
-    add_observer(state,nil,&block)
+    observers[state] = add_observer(state,nil,&block)
   end
 
   def fire(state)
     default_center.postNotificationName(state, object: nil, userInfo: nil) 
+  end
+  
+  def observes?(state)
+    observers.keys.include? state  
   end
 
   private

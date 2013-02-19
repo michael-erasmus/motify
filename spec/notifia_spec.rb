@@ -10,10 +10,8 @@ describe "notifia" do
     end
     
     it 'observes notifications' do
-      observed = false
       @hn.on :bla {|object| observed = true} 
-      NSNotificationCenter.defaultCenter.postNotificationName(:bla, object:nil, userInfo:nil)
-      observed.should == true 
+      @hn.should.observes :bla 
     end
 
     it 'fires notifications' do
