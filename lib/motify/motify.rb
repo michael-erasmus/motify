@@ -1,4 +1,4 @@
-module Notifia
+module Motify
   def observers
     @observers ||= {} 
   end

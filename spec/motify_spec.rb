@@ -1,7 +1,7 @@
-describe "notifia" do
+describe "motify" do
   before do
     @hn = HasNotifications.new
-    @hn.extend Notifia
+    @hn.extend Motify
   end
   
   describe 'on' do
@@ -12,7 +12,8 @@ describe "notifia" do
 
     it 'doesnt need to care about callback args' do
       @hn.on :yolo { puts :yolo }
-      @hn.fire :yolo #shouldnt raise error
+      @hn.fire :yolo
+      true.should == true #shouldnt raise error
     end
   end
 

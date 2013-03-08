@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
 require 'motion/project'
-require './lib/notifia'
+require './lib/motify'
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = 'notifia'
+  app.name = 'motify'
 end

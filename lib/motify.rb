@@ -1,6 +1,6 @@
 #blatently stole this code from sugarcube
 unless defined?(Motion::Project::Config)
-  raise "The notifia gem must be required within a RubyMotion project Rakefile."
+  raise "The motify gem must be required within a RubyMotion project Rakefile."
 end
 
 
@@ -18,7 +18,7 @@ Motion::Project::App.setup do |app|
     insert_point = index + 1
   end
 
-  Dir.glob(File.join(File.dirname(__FILE__), '/notifia/**/*.rb')).reverse.each do |file|
+  Dir.glob(File.join(File.dirname(__FILE__), '/motify/**/*.rb')).reverse.each do |file|
     app.files.insert(insert_point, file)
   end
 end
