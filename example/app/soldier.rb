@@ -2,7 +2,7 @@ class Soldier
   include Motify
 
   def initialize
-    on(:new_mission_started) { puts "ready to go!" }
+    on(:new_mission_started) {|location| puts "ready to go to #{location}!" }
   end
 
   def become_disillusioned

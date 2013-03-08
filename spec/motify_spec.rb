@@ -24,6 +24,13 @@ describe "motify" do
     fired.should == true
   end
 
+  it 'fires notifications, passing in data' do
+    passed = nil
+    @hn.on :baz {|object| passed = object}
+    @hn.fire :baz, "baz"
+    passed.should == "baz"
+  end
+
   it 'forgets notifications' do
     fired = false
     @hn.on :bar {|o| fired = true}

@@ -4,17 +4,17 @@ module Motify
   end
 
   def on(state,&block)
-    observers[state] = add_observer(state,nil) do |obj|
+    observers[state] = add_observer(state,nil) do |notification|
       if block.arity == 0
         block.call
       else
-        block.call obj
+        block.call notification.object
       end
     end
   end
 
-  def fire(state)
-    default_center.postNotificationName(state, object: nil, userInfo: nil) 
+  def fire(state, obj=nil)
+    default_center.postNotificationName(state, object: obj, userInfo: obj)
   end
   
   def observes?(state)
