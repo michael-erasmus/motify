@@ -4,7 +4,13 @@ module Notifia
   end
 
   def on(state,&block)
-    observers[state] = add_observer(state,nil,&block)
+    observers[state] = add_observer(state,nil) do |obj|
+      if block.arity == 0
+        block.call
+      else
+        block.call obj
+      end
+    end
   end
 
   def fire(state)

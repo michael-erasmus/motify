@@ -3,14 +3,17 @@ describe "notifia" do
     @hn = HasNotifications.new
     @hn.extend Notifia
   end
-
-  it "has a 'on' method" do
-    @hn.should.respond_to :on
-  end
   
-  it 'observes notifications' do
-    @hn.on :bla {|object| observed = true} 
-    @hn.should.observes :bla 
+  describe 'on' do
+    it 'observes notifications' do
+      @hn.on :bla {|object| observed = true}
+      @hn.should.observes :bla
+    end
+
+    it 'doesnt need to care about callback args' do
+      @hn.on :yolo { puts :yolo }
+      @hn.fire :yolo #shouldnt raise error
+    end
   end
 
   it 'fires notifications' do
